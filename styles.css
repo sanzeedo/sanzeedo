@@ -44,25 +44,26 @@ a:focus-visible { outline: 2px solid var(--link); outline-offset: 5px; border-ra
 
 .projects { min-width: 0; }
 .project { display: flex; flex-direction: column; gap: 12px; padding-bottom: 32px; border-bottom: 1px solid var(--surface); }
-.project__mockup { width: 100%; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 16px; background: var(--surface); }
-.project__mockup > img, .project__mockup > video { display: block; width: 100%; height: 100%; object-fit: contain; }
+.project__mockup { width: 100%; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 24px; background: var(--surface); }
+.project__mockup > img, .project__mockup > video { display: block; width: 100%; height: 100%; border-radius: inherit; object-fit: contain; }
+.project__mockup > video { pointer-events: none; }
+.project__mockup > video::-webkit-media-controls { display: none !important; }
 .project__description { display: flex; flex-direction: column; gap: 8px; }
 
 @media (min-width: 900px) {
-  body { font-size: 11px; line-height: 14px; }
-  .portfolio { grid-template-columns: 280px minmax(0, 460px); gap: 80px; width: min(100% - 40px, 820px); padding-block: 80px; }
+  .portfolio { grid-template-columns: minmax(0, 420fr) minmax(0, 620fr); gap: clamp(32px, calc(16vw - 112px), 80px); width: min(100% - 40px, 1120px); padding-block: 80px; }
   /* Профиль остаётся на месте; следующие кейсы продолжают обычную прокрутку страницы. */
-  .profile { position: sticky; top: 80px; align-self: start; }
+  .profile { position: sticky; top: 80px; align-self: start; max-height: calc(100dvh - 104px); overflow-y: auto; scrollbar-width: thin; }
   .profile__photo { width: 100px; height: 100px; border-radius: 24px; }
-  .profile__name { color: #666; font-size: 11px; line-height: 14px; }
-  .profile__label { color: #4d4d4d; font-size: 11px; line-height: 14px; }
+  .profile__name { color: #666; font-size: 14px; line-height: 18px; }
+  .profile__label { color: #4d4d4d; font-size: 14px; line-height: 18px; }
   .profile__intro, .profile__current p { text-wrap: balance; }
-  .profile__current { gap: 14px; }
+  .profile__current { gap: 21px; }
   .profile__links { gap: 0 16px; }
-  .profile__links a { padding-block: 0; font-size: 12px; line-height: 15px; }
+  .profile__links a { padding-block: 0; font-size: 14px; line-height: 18px; }
   .project { gap: 16px; padding-bottom: 40px; }
   .project__mockup { border-radius: 24px; }
-  .project__heading { color: #4d4d4d; font-size: 10px; line-height: 12px; }
+  .project__heading { color: #4d4d4d; font-size: 14px; line-height: 18px; }
 }
 
 /* На низком экране весь профиль остаётся доступным для прокрутки. */
